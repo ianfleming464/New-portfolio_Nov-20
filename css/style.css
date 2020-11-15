@@ -513,6 +513,7 @@ p {
 }
 
 .portfolio-item__img {
+  box-shadow: var(--bs);
   margin: 0 auto;
 }
 
