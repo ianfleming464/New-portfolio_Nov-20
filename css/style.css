@@ -419,7 +419,7 @@ p {
 
 .portfolio {
   display: grid;
-  gap: 10px;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   max-width: 1000px;
   margin: 0 auto;
