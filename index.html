@@ -76,7 +76,7 @@
             JavaScript (ES6+), Node.js/Express<br />
             GraphQL, REST APIs<br />
             Event-driven architecture<br />
-            Real-time synchronization<br />
+            Real-time synchronisation<br />
           </p>
         </div>
       </div>
@@ -85,54 +85,73 @@
       <a href="#work" class="btn">My Work</a>
     </section>
 
-    <!-- My Work -->
-      <section class="my-work" id="work">
+    <section class="my-work" id="work">
+      <div class="container">
         <h2 class="section__title section__title--work">My Work</h2>
-        
-        <!-- Professional Systems (Top Priority) -->
+
+        <!-- Production Systems -->
         <div class="professional-work">
           <h3 class="work-category">Production Systems</h3>
-          
-          <div class="project-card featured">
-            <h4>Multi-Platform Discount Coordination Engine</h4>
-            <p class="project-summary">Production system handling 7+ discount types with combination logic across 8 international stores. Coordinates between incompatible platforms when vendors claimed requirements "weren't achievable."</p>
+
+          <article class="project-card featured">
+            <header class="project-card__header">
+              <h4 class="project-card__title">Multi-Platform Discount Coordination Engine</h4>
+              <span class="project-card__badge">Deployed across 8 stores</span>
+            </header>
+
+            <p class="project-summary">
+              Production system handling 7+ discount types with combination logic across international storefronts.
+              Coordinates between incompatible platforms to present a single, trustworthy cart view.
+            </p>
+
+            <p class="tech-stack">JavaScript · Event Architecture · DOM APIs · Multi-platform Integration</p>
+
             <div class="project-links">
               <a href="discount-system-case-study.html" class="btn">Case Study</a>
-              <a href="https://github.com/yourusername/discount-system-docs" class="btn">Technical Docs</a>
+              <a href="https://github.com/yourusername/discount-system-docs" class="btn btn--ghost">
+                Technical Docs
+              </a>
+              <span class="project-note" title="Client code private for confidentiality">
+                <i class="fas fa-lock"></i> Client code private
+              </span>
             </div>
-            <p class="tech-stack">JavaScript, Event Architecture, DOM APIs, Multi-platform Integration</p>
-          </div>
+          </article>
         </div>
 
-        <!-- Technical Projects -->
+        <!-- Development Projects -->
         <div class="technical-projects">
           <h3 class="work-category">Development Projects</h3>
-          
-          <div class="project-grid">
-            <div class="project-card">
-              <h4>IP Information System</h4>
-              <p>Backend system aggregating patent data across jurisdictions using domain expertise from legal background.</p>
-              <div class="project-links">
-                <a href="https://github.com/ianfleming464/IP_App" class="btn">GitHub</a>
-              </div>
-              <p class="tech-stack">Node.js, Express, Web Scraping</p>
-            </div>
 
-            <div class="project-card">
-              <h4>Music Streaming Application</h4>
-              <p>Full-stack React application with playlist management and advanced state patterns.</p>
+          <div class="project-grid">
+            <article class="project-card">
+              <h4 class="project-card__title">IP Information System</h4>
+              <p class="project-summary">
+                Backend system aggregating patent data across jurisdictions using domain expertise from legal background.
+              </p>
+              <p class="tech-stack">Node.js · Express · Web Scraping</p>
+              <div class="project-links">
+                <a href="https://github.com/ianfleming464/IP_App" class="btn btn--ghost">GitHub</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h4 class="project-card__title">Music Streaming Application</h4>
+              <p class="project-summary">
+                Full-stack application with playlist management and advanced state patterns.
+              </p>
+              <p class="tech-stack">React · GraphQL · Material UI</p>
               <div class="project-links">
                 <a href="https://aesthetic-music-player.vercel.app/" class="btn">Live Demo</a>
-                <a href="https://github.com/ianfleming464/aesthetic-music-player" class="btn">GitHub</a>
+                <a href="https://github.com/ianfleming464/aesthetic-music-player" class="btn btn--ghost">GitHub</a>
               </div>
-              <p class="tech-stack">React, GraphQL, Material UI</p>
-            </div>
+            </article>
           </div>
         </div>
 
-  <!-- Resume Download -->
-  <a href="files/Ian Fleming Resume 2025.pdf" class="btn-resume" target="_blank">Download Resume</a>
-</section>
+        <a href="files/Ian Fleming Resume 2025.pdf" class="btn-resume" target="_blank">Download Resume</a>
+      </div>
+    </section>
+
 
     <!-- About Me -->
 
