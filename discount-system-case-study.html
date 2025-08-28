@@ -71,6 +71,11 @@
         <li><strong>State preservation</strong> – quick, safe reversion when codes/conditions change.</li>
       </ol>
 
+     
+      <h3>Technical Challenges</h3>
+      <p>Ensuring proportional discount allocation across mixed cart items (percentage vs. fixed amounts) while maintaining subtotal accuracy required custom mathematical distribution algorithms that consistently matched Shopify's backend calculations. Some markets required different currency formatting while maintaining unified discount logic.</p>
+
+
       <h3>Architecture (high level)</h3>
       <ul class="bullets-tight">
         <li><code>callbacks/</code> – DOM mutations for price/badge/subtotal.</li>
@@ -81,16 +86,21 @@
 
       <h3>Impact</h3>
       <ul>
-        <li>Clear, truthful cart totals → fewer discount-related support tickets.</li>
-        <li>Marketing links show correct prices pre-checkout → improved trust.</li>
-        <li>Deployed across multiple international storefronts; configurable per region.</li>
+        <li><strong>Improved Trust:</strong> Marketing links show correct prices pre-checkout</li>
+        <li><strong>International Deployment </strong>across multiple storefronts; configurable per region.</li>
+        <li><strong>Operational Efficiency:</strong> Reduced cart-related support tickets for customer service team, thanks to clear, truthful cart totals</li>
+        <li><strong>Marketing Enablement:</strong> Enabled complex promotional campaigns</li>
+        <li><strong>Customer Experience:</strong> Maintained customer trust through consistent cart-to-checkout pricing across international markets</li>
       </ul>
+
+      <h3>Key Technical Learning</h3>
+        <p>Sometimes the best engineering solution works around platform constraints rather than fighting them - building coordination layers often delivers better results than trying to force incompatible systems to communicate natively.</p>
 
       <h3>What I’d Do Next</h3>
       <ul>
         <li>Finish Coordinator refactor; extract allocation/formatting into reusable utils.</li>
         <li>Add configurable selectors so it’s Rebuy-aware, not Rebuy-locked.</li>
-        <li>Companion Shopify Function (TS/Wasm) to enforce rules at checkout where needed.</li>
+        <li>Companion Shopify Functions to enforce rules at checkout where needed.</li>
       </ul>
 
       <div class="project-links" style="margin-top:1.25rem">
@@ -124,10 +134,15 @@
 
       <div class="side-card">
         <h4>Constraints</h4>
-        <p class="small">
-          Shopify line-item split/merge can disrupt grouping for multi-quantity edge cases.
-          UI fails-safe to native behaviour; enforcement belongs to checkout Functions.
-        </p>
+        <ul class="small">
+          <li><strong>Discount Detection:</strong> Data accessibility varies unpredictably between Shopify and Rebuy APIs depending on discount type and application method</li>
+          <li><strong>Mathematical Precision:</strong> Rounding conflicts between cart-total and item-level allocation occasionally create 1-cent discrepancies in large carts</li>
+          <li><strong>Platform Dependencies:</strong> DOM selector fragility means third-party updates can break functionality without warning</li>
+          <li><strong>Race Conditions:</strong> Timing coordination required between multiple platform update cycles</li>
+          <li><strong>International Complexity:</strong> Currency formatting, browser compatibility, and general different theme setups across markets</li>
+          <li><strong>Line Item Behaviour:</strong> Shopify's unpredictable split/merge logic disrupts grouping assumptions</li>
+        </ul>
+        <p class="small">System designed to fail-safe to native behaviour when constraints create conflicts; true discount enforcement belongs at checkout level.</p>
       </div>
     </aside>
   </section>
