@@ -49,17 +49,20 @@
       </div>
 
       <h3>The Challenge</h3>
-      <ul>
-        <li>Automatic discounts exist only at checkout; manual codes affect cart UI.</li>
-        <li>No native way to reflect them together pre-checkout.</li>
-        <li>Shopify splits/merges identical line items, breaking naïve grouping logic.</li>
-      </ul>
+        <ul>
+          <li>Cart shows €100, checkout shows €85 with no explanation of the difference</li>
+          <li>No visual feedback when quantity changes affect line item pricing</li>
+          <li>Automatic discounts completely invisible until checkout</li>
+          <li>Manual discount codes don't coordinate with automatic promotions</li>
+          <li>High support volume from pricing confusion and lost customer trust</li>
+          <li>Shopify splits/merges identical line items, breaking naïve grouping logic.</li>
+        </ul>
 
       <h3>Solution · Built in Stages</h3>
       <ol>
         <li><strong>Callbacks for line items</strong> – dynamic UI based on quantity/changes.</li>
         <li><strong>Free gift handler</strong> – reads MOV/code/gift from admin; adds/removes safely.</li>
-        <li><strong>Manual code UI</strong> – compare-at + sale classes; transparent pricing.</li>
+        <li><strong>Manual discount code UI</strong> adds – compare-at + sale classes; transparent pricing; saves original state for ease of code removal</li>
         <li><strong>Proportional allocation</strong> – fixed/% spread so subtotal is always accurate.</li>
         <li><strong>URL discount sync</strong> – detects Shopify’s <code>discount_code</code> cookie; applies same UI updates.</li>
         <li><strong>3-for-2 handler</strong> – cheapest eligible item goes to zero; visuals + math stay in sync.</li>
