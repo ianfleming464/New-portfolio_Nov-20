@@ -40,7 +40,7 @@
     <div class="case-main">
       <h2>Summary</h2>
       <p>
-        Shopify applies <em>automatic</em> discounts at checkout and handles <em>manual</em> codes at the cart layer. The two don’t natively combine in the cart, leading to confusing subtotals and lost trust. I built a modular cart-layer system that detects both, allocates discounts proportionally, renders clear per-line price changes, and derives a truthful subtotal so the cart matches checkout expectations.
+        Shopify applies <em>automatic</em> discounts at checkout and allows us to handle <em>manual</em> codes at the cart layer. The two don’t natively combine in the cart, and the line item UI does not natively update to reflect the discount, leading to confusing subtotals and lost trust. I built a modular cart-layer system that detects both, allocates discounts proportionally, renders clear per-line price changes, and derives a truthful subtotal so the cart matches checkout expectations.
       </p>
 
       <div class="callout-note">
@@ -51,8 +51,9 @@
       <h3>The Challenge</h3>
         <ul>
           <li>Cart shows €100, checkout shows €85 with no explanation of the difference</li>
+          <li>Cart renders a message saying "Discount applied in checkout", but perhaps there is a clearer way to show this?</li>
           <li>No visual feedback when quantity changes affect line item pricing</li>
-          <li>Automatic discounts completely invisible until checkout</li>
+          <li>Automatic discounts completely invisible until checkout (again, "...applied in checkout")</li>
           <li>Manual discount codes don't coordinate with automatic promotions</li>
           <li>High support volume from pricing confusion and lost customer trust</li>
           <li>Shopify splits/merges identical line items, breaking naïve grouping logic.</li>
@@ -60,24 +61,25 @@
 
       <h3>Solution · Built in Stages</h3>
       <ol>
-        <li><strong>Callbacks for line items</strong> – dynamic UI based on quantity/changes.</li>
-        <li><strong>Free gift handler</strong> – reads MOV/code/gift from admin; adds/removes safely.</li>
+        <li><strong>Callbacks for line items</strong> – dynamic UI based on quantity/changes. Not native behaviour in all Shopify themes</li>
+        <li><strong>Free gift handler</strong> – reads MOV/code/gift from Admin; adds/removes safely and dynamically depending on cart state</li>
         <li><strong>Manual discount code UI</strong> adds – compare-at + sale classes; transparent pricing; saves original state for ease of code removal</li>
-        <li><strong>Proportional allocation</strong> – fixed/% spread so subtotal is always accurate.</li>
+        <li><strong>Proportional allocation</strong> – fixed / % discounts spread across line items, so subtotal is accurate.</li>
         <li><strong>URL discount sync</strong> – detects Shopify’s <code>discount_code</code> cookie; applies same UI updates.</li>
-        <li><strong>3-for-2 handler</strong> – cheapest eligible item goes to zero; visuals + math stay in sync.</li>
-        <li><strong>Auto-discount detection</strong> – listens for platform signals; mirrors expected checkout math in cart.</li>
-        <li><strong>Derived subtotal</strong> – sums effective per-line sale prices; overwrites displayed subtotal with guardrails.</li>
+        <li><strong>3-for-2 handler</strong> – cheapest eligible item goes to zero; visuals + math stay in sync. UI updates working in conjunction with native "Buy X Get Y" Shopify discount</li>
+        <li><strong>Auto-discount detection</strong> – listens for platform signals; mirrors expected checkout discounting in cart.</li>
+        <li><strong>Derived subtotal for combo scenarios</strong> – sums effective per-line sale prices; overwrites displayed subtotal with guardrails.</li>
         <li><strong>Combination logic</strong> – manual + auto together with coherent UI and totals.</li>
         <li><strong>Split/merge resilience</strong> – defensive regrouping; fails-safe to native display when needed.</li>
-        <li><strong>Event Manager → Coordinator</strong> – migrating to a single orchestrator (queue + debounce) for clean sequencing.</li>
-        <li><strong>State preservation</strong> – quick, safe reversion when codes/conditions change.</li>
+        <li><strong>Event Manager → Coordinator (coming soon)</strong> – migrating to a single orchestrator (queue + debounce) for clean sequencing.</li>
+        <li><strong>State preservation (coming soon)</strong> – quick, safe reversion when codes/conditions change.</li>
       </ol>
 
      
       <h3>Technical Challenges</h3>
       <p>Ensuring proportional discount allocation across mixed cart items (percentage vs. fixed amounts) while maintaining subtotal accuracy required custom mathematical distribution algorithms that consistently matched Shopify's backend calculations. Some markets required different currency formatting while maintaining unified discount logic.</p>
-
+      <p>Getting the cart line item UI to accurately reflect combination situations - for example, a URL-based discount is applied by Shopify at checkout level, then manually entered codes are cart level (so essentially ignored by Shopify's frontend). Getting the line item discounting to accurately calculate the correct full discount, update the subtotal - which natively ONLY shows the Shopify-applied disocounting (so the checkout-level, not checkout+cart level) and having everything reliably accurate into the checkout.</p>
+      <p>Comprehensive debugging was essential given the system's complexity across multiple platforms and discount combinations. Each module includes extensive debug logging that can be enabled via browser console commands (<code>window.CartCallbacks.debug(true)</code>), providing real-time visibility into state changes, allocation calculations, and UI updates. This proved invaluable for troubleshooting edge cases and performance optimization across different international deployments.</p>
 
       <h3>Architecture (high level)</h3>
       <ul class="bullets-tight">
@@ -86,6 +88,7 @@
         <li><code>utils/</code> – logging, cookies, debouncing, selectors, currency.</li>
         <li><code>eventManager</code> → <code>discountCoordinator</code> – orchestrate updates deterministically.</li>
       </ul>
+        <p>The upcoming DiscountCoordinator will replace the current event manager's broadcast approach with intelligent orchestration. Instead of multiple handlers reacting simultaneously to cart events, the Coordinator will analyze discount state first, then decide which handlers should run, in what order, and with what data. This prevents conflicts and race conditions while enabling more sophisticated discount combinations and cleaner debugging workflows.</p>
 
       <h3>Impact</h3>
       <ul>
@@ -99,7 +102,7 @@
       <h3>Key Technical Learning</h3>
         <p>Sometimes the best engineering solution works around platform constraints rather than fighting them - building coordination layers often delivers better results than trying to force incompatible systems to communicate natively.</p>
 
-      <h3>What I’d Do Next</h3>
+      <h3>What I’ll Do Next</h3>
       <ul>
         <li>Finish Coordinator refactor; extract allocation/formatting into reusable utils.</li>
         <li>Add configurable selectors so it’s Rebuy-aware, not Rebuy-locked.</li>
