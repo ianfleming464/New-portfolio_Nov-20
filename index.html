@@ -51,7 +51,7 @@
       <h1 class="section__title section__title--intro">
         Hey there. I'm<strong>Ian Fleming.</strong>
       </h1>
-      <p class="section__subtitle section__subtitle--intro">r e a c t _ d e v e l o p e r</p>
+      <p class="section__subtitle section__subtitle--intro">s h o p i f y _ d e v e l o p e r</p>
       <img src="img/ian2023.jpg" alt="a picture of Ian" class="intro__img" />
     </section>
 
@@ -60,26 +60,23 @@
       <h2 class="section__title section__title--services">What I do</h2>
       <div class="services">
         <div class="service">
-          <h3 class="service-h">Frontend skills:</h3>
+          <h3 class="service-h">E-commerce Systems:</h3>
           <p class="service-p">
-            React<br />
-            Javascript (ES6 and above)<br />
-            CSS / CSS Modules <br />
-            MaterialUI / Bootstrap<br />
-            HTML5<br />
+            Shopify (Liquid, APIs, Extensions)<br />
+            Cart integrations & checkout optimisation<br />
+            Multi-platform coordination<br />
+            International deployment<br />
           </p>
         </div>
         <!-- / service -->
 
         <div class="service">
-          <h3 class="service-h">Other skills:</h3>
+          <h3 class="service-h">Integration & APIs:</h3>
           <p class="service-p">
-            Git/Github <br />
-            Node.js/Express <br />
-            MongoDB / PostgreSQL <br />
-            Firestore / Firebase <br />
-            GraphQL / Apollo-client<br />
-            Jest, Pupeteer.
+            JavaScript (ES6+), Node.js/Express<br />
+            GraphQL, REST APIs<br />
+            Event-driven architecture<br />
+            Real-time synchronisation<br />
           </p>
         </div>
       </div>
@@ -88,86 +85,97 @@
       <a href="#work" class="btn">My Work</a>
     </section>
 
-    <!-- My Work -->
     <section class="my-work" id="work">
-      <h2 class="section__title section__title--work">My Work</h2>
-      <p class="section__subtitle section__subtitle--work">A selection of recent projects.</p>
+      <div class="container">
+        <h2 class="section__title section__title--work">My Work</h2>
 
-      <div class="portfolio">
-        <!-- Portfolio item 01 -->
-        <a href="musicplayerapp.html" class="portfolio__item">
-          <img src="img/2023aestheticthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+        <!-- Production Systems -->
+        <div class="professional-work">
+          <h3 class="work-category">Production Systems</h3>
 
-        <!-- Portfolio item 02 -->
-        <a href="foodorderingapp.html" class="portfolio__item">
-          <img src="img/2022foodappthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+          <article class="project-card featured">
+            <header class="project-card__header">
+              <h4 class="project-card__title">Multi-Platform Discount Coordination Engine</h4>
+              <span class="project-card__badge">Deployed across 8 stores</span>
+            </header>
 
-        <!-- Portfolio item 03 -->
-        <a href="pokedexapp.html" class="portfolio__item">
-          <img src="img/2022pokemonthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+            <p class="project-summary">
+              Production system handling 7+ discount types with combination logic across international storefronts.
+              Coordinates between incompatible platforms to present a single, trustworthy cart view.
+            </p>
 
-        <!-- Portfolio item 04 -->
-        <a href="moviesapp.html" class="portfolio__item">
-          <img src="img/2022moviesappthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+            <p class="tech-stack">JavaScript · Event Architecture · DOM APIs · Multi-platform Integration</p>
 
-        <!-- Portfolio item 03 -->
-        <!-- <a href="quizapp.html" class="portfolio__item">
-          <img src="img/2022retrogamethumbnail.png" alt="" class="portfolio__img" />
-        </a> -->
+            <div class="project-links">
+              <a href="discount-system-case-study.html" class="btn">Case Study</a>
+              <a href="https://github.com/yourusername/discount-system-docs" class="btn btn--ghost">
+                Technical Docs
+              </a>
+              <span class="project-note" title="Client code private for confidentiality">
+                <i class="fas fa-lock"></i> Client code private
+              </span>
+            </div>
+          </article>
+        </div>
 
-        <!-- Portfolio item 05 -->
-        <a href="meetupapp.html" class="portfolio__item">
-          <img src="img/2022meetupthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+        <!-- Development Projects -->
+        <div class="technical-projects">
+          <h3 class="work-category">Development Projects</h3>
 
-        <!-- Portfolio item 05 -->
-        <!-- <a href="todoapp.html" class="portfolio__item">
-          <img src="img/todoThumbnail.png" alt="" class="portfolio__img" />
-        </a> -->
+          <div class="project-grid">
+            <article class="project-card">
+              <h4 class="project-card__title">IP Information System</h4>
+              <p class="project-summary">
+                Backend system aggregating patent data across jurisdictions using domain expertise from legal background.
+              </p>
+              <p class="tech-stack">Node.js · Express · Web Scraping</p>
+              <div class="project-links">
+                <a href="https://github.com/ianfleming464/IP_App" class="btn btn--ghost">GitHub</a>
+              </div>
+            </article>
 
-        <!-- Portfolio item 06 -->
-        <a href="chatapp.html" class="portfolio__item">
-          <img src="img/2022mobilechatthumbnail.png" alt="" class="portfolio__img" />
-        </a>
+            <article class="project-card">
+              <h4 class="project-card__title">Music Streaming Application</h4>
+              <p class="project-summary">
+                Full-stack application with playlist management and advanced state patterns.
+              </p>
+              <p class="tech-stack">React · GraphQL · Material UI</p>
+              <div class="project-links">
+                <a href="https://aesthetic-music-player.vercel.app/" class="btn">Live Demo</a>
+                <a href="https://github.com/ianfleming464/aesthetic-music-player" class="btn btn--ghost">GitHub</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <a href="files/Ian Fleming Resume 2025.pdf" class="btn-resume" target="_blank">Download Resume</a>
       </div>
-      <a href="files/Ian Fleming Resume 2023.pdf" class="btn-resume" target="_blank"
-        >Download my Resume</a
-      >
     </section>
+
 
     <!-- About Me -->
 
     <section class="about-me" id="about">
       <h2 class="section__title section__title--about">Who am I?</h2>
       <p class="section__subtitle section__subtitle--about">
-        Fullstack React developer based in Munich
+        Shopify developer building for international e-commerce
       </p>
-
-      <div class="about-me__body">
-        <p>
-          I'm a certified web developer with a background in intellectual property and management.
-          So why the career change? After years as a manager of one of Ireland's most successful
-          independent bookshops - a position which gave me a voracious appetite for reading and a
-          love of people - my wife and I moved to Germany to seek out new adventures.
-        </p>
-        <p>
-          My studies have taught me that I love to build clean, responsive web applications. I
-          combine my new skills with proven talents, and bring a meticulousness and
-          attention-to-detail to my work, matched only by my dedication and perseverance.
-        </p>
-        <p>
-          When I'm not tinkering with React or juggling with Javascript, my passion is making and
-          performing electronic music. I've played shows in countries as diverse as Latvia,
-          Sardinia, Poland, Ireland, and more. I also love to run, to read(generally not
-          simultaneously), watch 80s action movies, complain about football, and spend time with my
-          family.
-        </p>
-      </div>
-
+        <div class="about-me__body">
+          <p>
+            Shopify developer building production systems for international e-commerce platforms. 
+            I specialize in complex integrations that make incompatible technologies work together 
+            reliably - solving problems that vendors often claim "can't be done easily."
+          </p>
+          <p>
+            My background in intellectual property law and management brings a strategic 
+            problem-solving approach to technical challenges. I focus on building systems 
+            that reduce operational overhead while enabling sophisticated business logic.
+          </p>
+          <p>
+            When not building coordination systems or debugging cart logic, I make electronic 
+            music, run, play guitar, cry about how terrible West Ham are, read obsessively, and spend time with my family in Munich.
+          </p>
+        </div>
       <img class="about-me__img" src="img/ianpic2.jpg" alt="Ian and Gemma cuddling" />
     </section>
 
@@ -198,15 +206,6 @@
             target="_blank"
           >
             <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-        <li class="social-list__item">
-          <a
-            class="social-list__link"
-            href="https://medium.com/@ianflemingdeveloper"
-            target="_blank"
-          >
-            <i class="fab fa-medium"></i>
           </a>
         </li>
       </ul>
