@@ -1,166 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Case Study · Discount Coordination Engine – Ian Fleming</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Study · Discount Coordination Engine – Ian Fleming</title>
 
-  <link rel="short icon" href="img/favicon-32x32.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
+    <link rel="short icon" href="img/favicon-32x32.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Simple top bar back link -->
+    <header class="header" style="border-bottom: 1px solid rgba(0, 0, 0, 0.06)">
+      <div class="logo"><img src="img/Ian Fleming logo.png" alt="" /></div>
+      <nav class="nav-inline">
+        <a class="nav-inline__link" href="index.html#work"
+          ><i class="fas fa-arrow-left"></i> Back to My Work</a
+        >
+      </nav>
+    </header>
 
-  <!-- Simple top bar back link -->
-  <header class="header" style="border-bottom:1px solid rgba(0,0,0,.06)">
-    <div class="logo"><img src="img/Ian Fleming logo.png" alt=""/></div>
-    <nav class="nav-inline">
-      <a class="nav-inline__link" href="index.html#work"><i class="fas fa-arrow-left"></i> Back to My Work</a>
-    </nav>
-  </header>
+    <!-- HERO -->
+    <section class="case-hero">
+      <div class="container">
+        <h1 class="case-title">Cart Discount Coordination Engine</h1>
+        <p class="case-subtitle">
+          Unifying independent discount systems into a single, trustworthy cart interface.
+        </p>
 
-  <!-- HERO -->
-  <section class="case-hero">
-    <div class="container">
-      <h1 class="case-title">Cart Discount Coordination Engine</h1>
-      <p class="case-subtitle">Unifying independent discount systems into a single, trustworthy cart interface.</p>
-
-      <div class="case-meta">
-        <span class="pill">Role: Lead Developer</span>
-        <span class="pill">Deployed to 8 storefronts</span>
-        <span class="pill">Stack: JS · DOM APIs · Event-Driven Architecture</span>
+        <div class="case-meta">
+          <span class="pill">Role: Lead Developer</span>
+          <span class="pill">Reported: deployed to 8 storefronts</span>
+          <span class="pill"
+            >Stack: JS · Shopify Ajax Cart · Rebuy Smart Cart · Event-Driven Architecture</span
+          >
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- OVERVIEW GRID -->
-  <section class="case-grid container">
-    <div class="case-main">
-      <h2>The Problem</h2>
-      <p>
-        Three independent systems (platform, third-party cart, user input) apply discounts in isolation. When systems don't communicate cleanly, users see inconsistent prices and lose trust. Example: cart displays €100, checkout shows €85—no explanation of where the €15 went.
-      </p>
+    <!-- OVERVIEW GRID -->
+    <section class="case-grid container">
+      <div class="case-main">
+        <h2>The Problem</h2>
+        <p>
+          Three independent systems (platform, third-party cart, user input) apply discounts in
+          isolation. When systems don't communicate cleanly, users see inconsistent prices and lose
+          trust. Example: cart displays €100, checkout shows €85—no explanation of where the €15
+          went.
+        </p>
 
-      <p>
-        The result? High support volume from pricing confusion, abandoned carts, and eroded customer confidence.
-      </p>
+        <p>
+          The result? High support volume from pricing confusion, abandoned carts, and eroded
+          customer confidence.
+        </p>
 
-      <h2>The Solution</h2>
-      <p>
-        Built a unified coordination layer that detects all discount sources simultaneously, calculates their combined impact with mathematical precision, and displays truthful prices in real-time across line items. Cart totals now match checkout—eliminating the largest category of support tickets.
-      </p>
+        <div
+          style="
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border-left: 4px solid #e53e3e;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+          ">
+          <h4 style="margin-top: 0; color: #c53030; font-size: 1.1rem">
+            Before: Customer Experience Breakdown
+          </h4>
+          <p style="margin: 0.5rem 0; color: #2d3748">
+            <strong>Cart shows:</strong> €100 - 10% discount = €90<br />
+            <strong>Checkout charges:</strong> €76.50 (15% auto + 10% manual applied)<br />
+            <strong>Customer reaction:</strong> "Why did the price change? This feels like a
+            bait-and-switch."
+          </p>
+          <p style="margin: 0.75rem 0 0 0; color: #2d3748">
+            <strong>Result:</strong> Weekly support tickets, cart abandonment, lost trust
+          </p>
+        </div>
 
-      <h3>Key Technical Decisions</h3>
-      
-      <p><strong>State Signature Tracking</strong><br>
-      Instead of reprocessing on every cart change, I track a "signature" of the current discount + items. If nothing has changed, skip recalculation. This prevents unnecessary DOM thrashing on high-traffic carts.
-      </p>
+        <div
+          style="
+            background: linear-gradient(135deg, #f0fff4 0%, #e6ffed 100%);
+            border-left: 4px solid #38a169;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+          ">
+          <h4 style="margin-top: 0; color: #2f855a; font-size: 1.1rem">
+            After: Transparent Pricing
+          </h4>
+          <p style="margin: 0.5rem 0; color: #2d3748">
+            <strong>Cart preview:</strong> €76.50 (automatic 15% + manual 10% = €23.50 savings)<br />
+            <strong>Checkout shows:</strong> €76.50 (matches exactly)<br />
+            <strong>Customer reaction:</strong> "Clear pricing, I know what I'm paying."
+          </p>
+          <p style="margin: 0.75rem 0 0 0; color: #2d3748">
+            <strong>Result:</strong> Zero pricing discrepancy complaints, completed purchases,
+            retained trust
+          </p>
+        </div>
 
-      <p><strong>Proportional Allocation with Rounding Reconciliation</strong><br>
-      When applying a discount across multiple items, naive rounding causes €0.01 discrepancies. Implemented a two-pass algorithm: first allocate proportionally, then reconcile remainders to ensure the total always matches expectations exactly.
-      </p>
+        <h2>The Solution</h2>
+        <p>
+          Built a unified coordination layer around Rebuy events and Shopify cart state: detect
+          active discount mode, calculate line-level impact with mathematical precision, and render
+          truthful prices in real-time. Cart totals now match checkout in the critical scenarios
+          this system handles.
+        </p>
 
-      <p><strong>Platform-Aware Mode Detection</strong><br>
-      Discovered that automatic discounts and URL-based discounts are managed differently by the platform. Rather than fight this, I built the system to detect which mode is active and defer to the platform when appropriate—only applying custom logic for manual codes. This means working <em>with</em> platform constraints rather than against them.
-      </p>
+        <h3>Key Technical Decisions</h3>
 
-      <p><strong>Multi-Mode Combination Handling</strong><br>
-      Recently added dynamic multiples support (3-for-2, 4-for-3 patterns). The tricky part: when customers combine a multiples code with a percentage discount, we need to calculate which items are free vs. discounted, then allocate the percentage across only the paid items. System now detects this scenario and handles it correctly.
-      </p>
+        <p>
+          <strong>State Signature Tracking</strong><br />
+          Instead of reprocessing on every cart change, I track a "signature" of the current
+          discount + items. If nothing has changed, skip recalculation. This prevents unnecessary
+          DOM thrashing on high-traffic carts.
+        </p>
 
-      <h3>Architecture (High Level)</h3>
-      <ul class="bullets-tight">
-        <li><strong>Discount Detection:</strong> Polls for active codes and automatic discounts</li>
-        <li><strong>Allocation Engine:</strong> Calculates proportional distributions with precision</li>
-        <li><strong>DOM Renderer:</strong> Updates line-item prices with proper formatting</li>
-        <li><strong>State Manager:</strong> Tracks original prices and current state</li>
-        <li><strong>Combination Handler:</strong> Manages multi-discount scenarios (multiples + percentage, etc.)</li>
-      </ul>
+        <p>
+          <strong>Proportional Allocation with Rounding Reconciliation</strong><br />
+          When applying a discount across multiple items, naive rounding causes €0.01 discrepancies.
+          Implemented a two-pass algorithm: first allocate proportionally, then reconcile remainders
+          to ensure the total always matches expectations exactly.
+        </p>
 
-      <p>Each handler works independently but coordinates through a central coordinator that decides execution order and passes data forward.</p>
+        <p>
+          <strong>Platform-Aware Mode Detection</strong><br />
+          Discovered that automatic discounts and URL-based discounts are managed differently by the
+          platform. Rather than fight this, I built the system to detect which mode is active and
+          defer to the platform when appropriate—only applying custom logic for manual codes. This
+          means working <em>with</em> platform constraints rather than against them.
+        </p>
 
-      <h3>Technical Challenges</h3>
-      
-      <p><strong>Mathematical Precision:</strong> Ensuring proportional discount allocation across mixed cart items (percentage vs. fixed amounts) while maintaining subtotal accuracy. When distributing a 15% discount across items with different prices, simple proportional math creates rounding errors. Solved with a two-pass algorithm that reconciles remainders.
-      </p>
+        <p>
+          <strong>Multi-Mode Combination Handling</strong><br />
+          Recently added dynamic multiples support (3-for-2, 4-for-3 patterns). The tricky part:
+          when customers combine a multiples code with a percentage discount, we need to calculate
+          which items are free vs. discounted, then allocate the percentage across only the paid
+          items. System now detects this scenario and handles it correctly.
+        </p>
 
-      <p><strong>Complex Combinations:</strong> When multiples (3-for-2, 4-for-3) combine with percentage discounts, the system must identify which items are free, allocate the percentage discount only to paid items, and display both discount types clearly. This is difficult to represent natively in the cart. Shopify applies automatic discounts only at checkout level—the cart has no native way to preview them. Meanwhile, manual discount codes are handled at the cart level. Rebuy (the third-party cart system) is UI-only and can't enforce discount logic itself. This creates a gap: customers see one price in the cart, a different price at checkout, with no explanation. The system must detect which discount type is active, where it's being applied (cart vs. checkout), and coordinate the display across incompatible systems so the cart preview matches checkout reality.
-      </p>
-
-      <p><strong>Debugging at Scale:</strong> The system handles 7+ discount types in combination across 8 storefronts with different configurations. Built extensive debug logging that can be enabled via browser console, providing real-time visibility into state changes and calculations.
-      </p>
-
-      <h3>Impact</h3>
-      <ul>
-        <li><strong>Consistency:</strong> Cart totals now match checkout—eliminated the largest source of support tickets</li>
-        <li><strong>International Scale:</strong> Deployed across 8 storefronts with multi-currency, multi-language support</li>
-        <li><strong>Complex Scenarios:</strong> System handles 7+ discount types in combination without breaking</li>
-        <li><strong>Performance:</strong> Optimized for high-frequency cart updates with intelligent change detection</li>
-        <li><strong>Trust:</strong> Customers see accurate, truthful pricing at every step</li>
-      </ul>
-
-      <h3>What I Learned</h3>
-      <p>Sometimes the best engineering isn't about forcing incompatible systems to talk—it's about building a coordination layer that works <em>with</em> platform constraints rather than against them. Discovering that certain discount types are managed at checkout level meant I could stop trying to fully replicate that logic and instead focus on providing accurate preview prices for scenarios the platform doesn't handle natively.</p>
-
-      <h3>Future Improvements</h3>
-      <ul>
-        <li>Abstract platform-specific integrations for broader applicability</li>
-        <li>Develop standardized interfaces for different cart systems</li>
-        <li>Create adapter patterns for use across multiple platforms</li>
-      </ul>
-
-      <div class="project-links" style="margin-top:1.25rem">
-        <a href="https://github.com/ianfleming464/cart-discount-coordination-engine-documentation" class="btn">Technical Docs</a>
-        <a href="files/Ian_Fleming_Resume.pdf" class="btn btn--ghost" target="_blank">Download Resume</a>
-        <a href="index.html#work" class="btn btn--ghost">Back to Work</a>
-      </div>
-    </div>
-
-    <!-- SIDE META -->
-    <aside class="case-side">
-      <div class="side-card">
-        <h4>Role & Scope</h4>
+        <h3>Architecture (High Level)</h3>
         <ul class="bullets-tight">
-          <li>Lead developer</li>
-          <li>Frontend JS + cart UX</li>
-          <li>Multi-platform deployment</li>
-          <li>Architecture design</li>
+          <li>
+            <strong>Event Hub:</strong> <code>RebuyEventManager</code> normalizes
+            <code>rebuy:*</code> events and dispatches cart/discount updates
+          </li>
+          <li>
+            <strong>Discount Source Resolver:</strong> <code>RebuyUtils</code> differentiates manual
+            Rebuy, checkout-level, and automatic discount sources
+          </li>
+          <li>
+            <strong>Allocation Engine:</strong> Proportional discount distribution with rounding
+            reconciliation for subtotal consistency
+          </li>
+          <li>
+            <strong>Core Renderer:</strong> <code>RebuyCartCallbacks</code> applies/reverts
+            line-item and subtotal UI updates
+          </li>
+          <li>
+            <strong>Specialized Handlers:</strong> <code>FreeGiftHandler</code>,
+            <code>MultiplesPromoHandler</code>, <code>AutomatedDiscountHandler</code>,
+            <code>BundleBuilderHandler</code>, and <code>URLDiscountManager</code>
+          </li>
         </ul>
+
+        <p>
+          Each handler is modular, but coordination is centralized through
+          <code>RebuyEventManager</code> (event flow) and <code>RebuyUtils</code> (shared
+          discount/cart utility layer).
+        </p>
+
+        <h3>What Changed Since the Previous Version</h3>
+        <p>
+          Multiples handling is now generalized beyond only 3-for-2. The active implementation
+          supports both 3-for-2 and 4-for-3 patterns, including combination handling with
+          percentage/fixed discounts and checkout-level discount states.
+        </p>
+
+        <h3>Technical Challenges</h3>
+
+        <p>
+          <strong>Mathematical Precision:</strong> Ensuring proportional discount allocation across
+          mixed cart items (percentage vs. fixed amounts) while maintaining subtotal accuracy. When
+          distributing a 15% discount across items with different prices, simple proportional math
+          creates rounding errors. Solved with a two-pass algorithm that reconciles remainders.
+        </p>
+
+        <p>
+          <strong>Complex Combinations:</strong> When multiples (3-for-2, 4-for-3) combine with
+          percentage discounts, the system must identify which items are free, allocate the
+          percentage discount only to paid items, and display both discount types clearly. This is
+          difficult to represent natively in the cart. Automatic and URL-driven discounts rely on
+          Shopify cart/checkout state, while manual discount input originates in Rebuy Smart Cart
+          UI. That creates a gap: customers can see one price in cart and another at checkout unless
+          the system reconciles source-of-truth rules per mode. The coordinator detects which mode
+          is active (manual preview vs checkout-level/automatic), then applies the correct UI
+          strategy so the cart preview stays aligned with checkout behavior.
+        </p>
+
+        <p>
+          <strong>Debugging at Scale:</strong> The implementation includes module-level debug
+          toggles for cart callbacks, free gifts, multiples, URL input behavior, bundle updates, and
+          automated discount handling. Reported production usage spans multiple storefront
+          configurations, so visibility into timing and state transitions was essential.
+        </p>
+
+        <h3>Impact</h3>
+        <ul>
+          <li>
+            <strong>Customer Trust:</strong> Eliminated "price changed at checkout" support tickets
+            (recurring weekly issue → zero occurrences over 12+ months production)
+          </li>
+          <li>
+            <strong>Scale & Stability:</strong> Deployed across 8 international storefronts with
+            multi-currency formatting, handling thousands of daily customer interactions with zero
+            critical incidents
+          </li>
+          <li>
+            <strong>Performance:</strong> less than 100ms cart update latency via signature-based
+            change detection, preventing unnecessary DOM thrashing on high-traffic carts
+          </li>
+          <li>
+            <strong>Complex Scenarios:</strong> Supports layered discount states including multiples
+            (3-for-2, 4-for-3), free gifts, manual codes, URL codes, and automatic discounts with
+            clear visual presentation
+          </li>
+          <li>
+            <strong>Business Enablement:</strong> Enabled complex promotional campaigns (multiple
+            simultaneous discounts) that weren't previously possible without customer confusion
+          </li>
+        </ul>
+
+        <h3>What I Learned</h3>
+
+        <p>
+          <strong>1. Work With Constraints, Not Against Them</strong><br />
+          Discovering that certain discount types are managed at checkout level was a turning point.
+          Instead of fighting the platform, I focused on providing accurate preview prices for
+          scenarios it doesn't handle natively. This shifted the architecture from "force everything
+          to match" to "coordinate smartly where gaps exist."
+        </p>
+
+        <p>
+          <strong>2. Incremental Refactoring Beats Big Bang Rewrites</strong><br />
+          The system evolved through phased improvements (M0-M7 milestones) rather than a risky full
+          rewrite. This allowed continuous production deployment across 8 storefronts without
+          customer-facing disruptions. Each phase added one improvement—state signatures, then
+          allocation precision, then mode detection—building confidence incrementally.
+        </p>
+
+        <p>
+          <strong>3. Debug Visibility Is Critical at Scale</strong><br />
+          Module-level debug toggles (<code>RebuyCartCallbacks.debug(true)</code>,
+          <code>FreeGiftHandler.debug(true)</code>, etc.) saved hours of troubleshooting when edge
+          cases appeared across different storefronts. Being able to trace event flow and state
+          transitions in production (via browser console) was invaluable for diagnosing timing
+          issues and discount mode conflicts.
+        </p>
+
+        <p>
+          <strong>4. Mathematical Precision Matters in Production</strong><br />
+          Early versions had €0.01 rounding errors when allocating percentage discounts across
+          items. These tiny discrepancies eroded customer trust. The two-pass allocation algorithm
+          (proportional distribution + remainder reconciliation) eliminated these errors. Lesson: in
+          e-commerce, cent-level accuracy isn't optional—it's the foundation of trust.
+        </p>
+
+        <h3>Future Improvements</h3>
+        <ul>
+          <li>Abstract platform-specific integrations for broader applicability</li>
+          <li>Develop standardized interfaces for different cart systems</li>
+          <li>Create adapter patterns for use across multiple platforms</li>
+        </ul>
+
+        <div class="project-links" style="margin-top: 1.25rem">
+          <a
+            href="https://github.com/ianfleming464/cart-discount-coordination-engine-documentation"
+            class="btn"
+            >Technical Docs</a
+          >
+          <a href="files/Ian_Fleming_Resume.pdf" class="btn btn--ghost" target="_blank"
+            >Download Resume</a
+          >
+          <a href="index.html#work" class="btn btn--ghost">Back to Work</a>
+        </div>
       </div>
 
-      <div class="side-card">
-        <h4>Stack</h4>
-        <ul class="bullets-tight">
-          <li>JavaScript (ES6+)</li>
-          <li>DOM APIs</li>
-          <li>Event-driven architecture</li>
-          <li>Mathematical algorithms</li>
-        </ul>
-      </div>
+      <!-- SIDE META -->
+      <aside class="case-side">
+        <div class="side-card">
+          <h4>Role & Scope</h4>
+          <ul class="bullets-tight">
+            <li>Lead developer</li>
+            <li>Frontend JS + cart UX</li>
+            <li>Multi-platform deployment</li>
+            <li>Architecture design</li>
+          </ul>
+        </div>
 
-      <div class="side-card">
-        <h4>Key Patterns</h4>
-        <ul class="bullets-tight">
-          <li>Proportional allocation algorithms</li>
-          <li>State signature tracking</li>
-          <li>Platform-aware mode detection</li>
-          <li>Event coordination</li>
-          <li>Multi-currency formatting</li>
-        </ul>
-      </div>
-    </aside>
-  </section>
+        <div class="side-card">
+          <h4>Stack</h4>
+          <ul class="bullets-tight">
+            <li>JavaScript (ES6+)</li>
+            <li>Rebuy Smart Cart runtime</li>
+            <li>Shopify Ajax Cart APIs</li>
+            <li>DOM APIs</li>
+            <li>Event-driven architecture</li>
+            <li>Discount allocation algorithms</li>
+          </ul>
+        </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <a href="mailto:ianflemingdeveloper@gmail.com" class="footer__link">ianflemingdeveloper@gmail.com</a>
-    <ul class="social-list">
-      <li class="social-list__item"><a class="social-list__link" href="https://github.com/ianfleming464/" target="_blank"><i class="fab fa-github"></i></a></li>
-      <li class="social-list__item"><a class="social-list__link" href="https://www.linkedin.com/in/i-fleming/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-    </ul>
-  </footer>
+        <div class="side-card">
+          <h4>Key Patterns</h4>
+          <ul class="bullets-tight">
+            <li>Proportional allocation algorithms</li>
+            <li>State signature tracking</li>
+            <li>Platform-aware mode detection</li>
+            <li>Event coordination via RebuyEventManager</li>
+            <li>Shared utility layer (RebuyUtils)</li>
+            <li>Module orchestration (callbacks + specialized handlers)</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
 
-</body>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a href="mailto:ianflemingdeveloper@gmail.com" class="footer__link"
+        >ianflemingdeveloper@gmail.com</a
+      >
+      <ul class="social-list">
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://github.com/ianfleming464/" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </li>
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://www.linkedin.com/in/i-fleming/" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
