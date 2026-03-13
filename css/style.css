@@ -350,12 +350,16 @@ p {
 @media (min-width: 800px) {
   .services {
     display: flex;
-    max-width: 1000px;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
-  .service + .service {
-    margin-left: 2em;
+  .service {
+    flex: 0 1 30%;
+    max-width: 320px;
+    margin: 0;
   }
 }
 
@@ -622,6 +626,7 @@ p {
 .project-summary {
   margin: .5rem 0 1rem;
   color: rgba(255,255,255,0.9);
+  text-align: justify;
 }
 
 .tech-stack {
