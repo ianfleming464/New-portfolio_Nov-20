@@ -1,253 +1,126 @@
 <!doctype html>
-<html lang="eng">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio || Ian Fleming</title>
-    <link rel="short icon" href="img/favicon-32x32.png" />
+    <title>Ian Fleming — Shopify Plus Engineer</title>
+    <meta
+      name="description"
+      content="Ian Fleming — Shopify Plus engineer specializing in integration and event-driven architecture across international e-commerce." />
+    <link rel="icon" href="img/favicon-32x32.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
-      crossorigin="anonymous" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet" />
-    <!-- <link
-      href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap"
-      rel="stylesheet"
-    /> -->
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <header class="header">
-      <div class="logo">
-        <img src="img/Ian Fleming logo.png" alt="" />
+  <body class="site">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__mark" href="index.html">IAN FLEMING</a>
+        <a class="site-header__resume" href="files/Ian_Fleming_Resume.pdf" target="_blank" rel="noopener">
+          Resume ↗
+        </a>
       </div>
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-          <li class="nav__item"><a href="#services" class="nav__link">What I Do</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About Me</a></li>
-          <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-          <li class="nav__item"><a href="impressum.html" class="nav__link">Impressum</a></li>
-        </ul>
-      </nav>
     </header>
 
-    <!-- Introduction -->
-    <section class="intro" id="home">
-      <h1 class="section__title section__title--intro">
-        Hey there. I'm<strong>Ian Fleming.</strong>
-      </h1>
-      <p class="section__subtitle section__subtitle--intro">j a v a s c r i p t _ e n g i n e e r</p>
-      <img src="img/ian2023.jpg" alt="a picture of Ian" class="intro__img" />
-    </section>
+    <section class="hero" id="home">
+      <div class="hero__inner">
+        <h1 class="hero__name">Ian Fleming</h1>
+        <p class="hero__position">Shopify Plus Engineer | Fullstack, Integrations & International Storefronts </p>
 
-    <!-- My Services -->
-    <section class="my-services" id="services">
-      <h2 class="section__title section__title--services">What I do</h2>
-      <div class="services">
-        <div class="service">
-          <h3 class="service-h">E-commerce Systems:</h3>
-          <p class="service-p">
-            Shopify (Liquid, APIs, Extensions)<br />
-            Cart integrations & checkout optimisation<br />
-            Multi-platform coordination<br />
-            International deployment<br />
+        <div class="hero__intro">
+          <p>
+            I'm a fullstack Shopify Plus engineer working across storefront relaunches, apps and
+            checkout extensions, analytics, and A/B testing. My deepest work is in integration —
+            making independent platforms behave as one, for the kind of problem where three
+            services disagree on a price, or a discount works in the cart but breaks at checkout.
+          </p>
+          <p>
+            Before engineering, I spent years getting complex, multi-party processes right the
+            first time in IP administration — the same instinct I bring to integration work, where
+            small errors compound.
           </p>
         </div>
-        <!-- / service -->
 
-        <div class="service">
-          <h3 class="service-h">Integration & Architecture:</h3>
-          <p class="service-p">
-            Event-driven systems<br />
-            GraphQL & REST APIs<br />
-            Multi-platform coordination<br />
-            Real-time synchronisation<br />
-          </p>
-        </div>
-        <div class="service">
-          <h3 class="service-h">Modern Stack:</h3>
-          <p class="service-p">
-            Next.js & React applications<br />
-            TypeScript<br />
-            AI/ML integration (RAG, OpenAI)<br />
-            Full-stack deployment<br />
-          </p>
+        <div class="reconcile">
+          <p class="reconcile__row">DE · IT · CH · FR · NL · ES</p>
+          <p class="reconcile__caption">Six storefronts. One reconciled price.</p>
         </div>
       </div>
-      <!-- / services -->
-
-      <a href="#work" class="btn">My Work</a>
     </section>
 
-    <section class="my-work" id="work">
-      <div class="container">
-        <h2 class="section__title section__title--work">My Work</h2>
+    <section class="work" id="work">
+      <div class="work__inner">
+        <h2 class="work__label">Featured work</h2>
 
-  <!-- Production Systems -->
-<div class="professional-work">
-  <h3 class="work-category">Production Systems</h3>
- 
-  <article class="project-card featured">
-    <header class="project-card__header">
-      <h4 class="project-card__title">Cart Discount Coordination Engine</h4>
-      <span class="project-card__badge">Deployed across 6 storefronts</span>
-    </header>
- 
-    <p class="project-summary">
-      Customers were seeing one price in the cart and a different one at checkout — a
-      trust-eroding problem generating recurring support tickets. Built an event-driven
-      coordination layer that detects active discount modes across Shopify, Rebuy Smart Cart,
-      and manual input, calculating accurate prices in real time. 12+ months production
-      stability, zero critical incidents, eliminated pricing discrepancy complaints entirely.
-    </p>
- 
-    <p class="tech-stack">
-      JavaScript · Event-Driven Architecture · DOM APIs · Shopify · Rebuy · Multi-platform Integration
-    </p>
- 
-    <div class="project-links">
-      <a href="discount-system-case-study.html" class="btn">Case Study</a>
-      <a
-        href="https://github.com/ianfleming464/cart-discount-coordination-engine-documentation"
-        class="btn btn--ghost"
-        target="_blank">
-        Technical Docs
-      </a>
-      <span class="project-note" title="Client code private for confidentiality">
-        <i class="fas fa-lock"></i> Client code private
-      </span>
-    </div>
-  </article>
-</div>
- 
-<!-- Development Projects -->
-<div class="technical-projects">
-  <h3 class="work-category">Development Projects</h3>
- 
-  <div class="project-grid">
-    <article class="project-card">
-      <h4 class="project-card__title">FounderVoice AI</h4>
-      <span class="project-card__badge project-card__badge--new">AI/ML</span>
-      <p class="project-summary">
-        RAG-powered content generation tool. Train the system on at least 100,000 words of
-        existing writing and it generates new content grounded in that voice — using
-        retrieval-augmented generation to pull relevant stylistic examples rather than
-        relying on the base model alone.
-      </p>
-      <p class="tech-stack">
-        Next.js · TypeScript · OpenAI API · Pinecone · RAG Architecture
-      </p>
-      <div class="project-links">
-        <a
-          href="https://github.com/ianfleming464/founders-voice-ai-mcp"
-          class="btn"
-          target="_blank">GitHub</a>
-        <a
-          href="https://github.com/ianfleming464/founders-voice-ai-mcp#readme"
-          class="btn btn--ghost"
-          target="_blank">Documentation</a>
+        <div class="work-row">
+          <article class="work-featured">
+            <h3 class="card-title">Cart Discount Coordination Engine</h3>
+            <p class="card-dek">Three systems, one price — in the cart and at checkout.</p>
+            <p class="work-featured__summary">
+              Customers were seeing one price in the cart and a different one at checkout — a
+              trust-eroding problem generating recurring support tickets. Built an event-driven
+              coordination layer that detects the active discount mode across Shopify, Rebuy Smart
+              Cart, and manual input, and calculates accurate prices in real time. 12+ months in
+              production, zero critical incidents, pricing-discrepancy complaints eliminated
+              entirely.
+            </p>
+            <p class="work-featured__stack">
+              JavaScript · Event-Driven Architecture · Shopify Ajax Cart · Rebuy Smart Cart
+            </p>
+            <div class="work-featured__links">
+              <a href="discount-system-case-study.html" class="link-arrow">Read the case study →</a>
+              <a
+                href="https://github.com/ianfleming464/cart-discount-coordination-engine-documentation"
+                class="link-quiet"
+                target="_blank"
+                rel="noopener">
+                Technical docs
+              </a>
+            </div>
+          </article>
+
+          <article class="work-secondary">
+            <h3 class="card-title">FounderVoice AI</h3>
+            <p class="card-dek">Generic AI output vs. a founder's actual voice, side by side.</p>
+            <p class="work-secondary__summary">
+              Founder writing is chunked, embedded, and stored in Pinecone under that founder's
+              namespace. A prompt is embedded the same way, matched against those chunks, and used
+              to ground an OpenAI completion in their actual style — rendered next to the same
+              prompt run through a generic model, for direct comparison.
+            </p>
+            <p class="work-secondary__stack">Next.js · TypeScript · OpenAI API · Pinecone</p>
+            <div class="work-secondary__links">
+              <a href="https://founders-voice-ai-mcp.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+              <a href="https://github.com/ianfleming464/founders-voice-ai-mcp" target="_blank" rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://github.com/ianfleming464/founders-voice-ai-mcp#readme"
+                target="_blank"
+                rel="noopener"
+                >Docs</a
+              >
+            </div>
+          </article>
+        </div>
       </div>
-    </article>
- 
-    <article class="project-card">
-      <h4 class="project-card__title">Tried &amp; Tweaked</h4>
-      <span class="project-card__badge project-card__badge--new">Full-Stack</span>
-      <p class="project-summary">
-        Family recipe management application built for real use. Features intelligent
-        ingredient scaling that parses and converts quantities while preserving qualitative
-        measurements, image upload, tag-based search with AND logic, and comprehensive
-        test coverage (Vitest unit tests + Playwright E2E).
-      </p>
-      <p class="tech-stack">
-        Next.js · TypeScript · PostgreSQL · Tailwind CSS · Vitest · Playwright
-      </p>
-      <div class="project-links">
-        <a
-          href="https://github.com/ianfleming464/tried-and-tweaked"
-          class="btn"
-          target="_blank">GitHub</a>
-        <a
-          href="https://tried-and-tweaked.vercel.app"
-          class="btn btn--ghost"
-          target="_blank">Live Demo</a>
+    </section>
+
+    <footer class="site-footer" id="contact">
+      <div class="site-footer__inner">
+        <a href="mailto:ianflemingdeveloper@gmail.com">ianflemingdeveloper@gmail.com</a>
+        <nav class="site-footer__links" aria-label="Contact links">
+          <a href="https://github.com/ianfleming464/" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/i-fleming/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="files/Ian_Fleming_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a href="impressum.html">Impressum</a>
+        </nav>
       </div>
-    </article>
-  </div>
-</div>
-    </section>
-
-    <!-- About Me -->
-
-    <section class="about-me" id="about">
-      <h2 class="section__title section__title--about">Who am I?</h2>
-      <p class="section__subtitle section__subtitle--about">
-        Javascript engineer building for international e-commerce
-      </p>
- <div class="about-me__body">
-    <p>
-      I build integration systems that make independent platforms behave as one — the kind
-      of problems where three services disagree on a price, or a discount works in the cart
-      but breaks at checkout. Two years of production experience across international
-      e-commerce, with a focus on reliability when the edge cases arrive.
-    </p>
-    <p>
-      Before development I spent years in intellectual property administration and
-      management — work that was fundamentally about precision, deadlines, and getting
-      complex processes right first time. That instinct carried over.
-    </p>
-    <p>
-      When not building coordination systems or debugging cart logic, I make electronic
-      music, run, play guitar, cry about how terrible West Ham are, read obsessively, and
-      spend time with my family in Munich.
-    </p>
-  </div>
-
- 
-      <img class="about-me__img" src="img/ianpic2.jpg" alt="Ian and Gemma cuddling" />
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-      <a href="mailto:ianflemingdeveloper@gmail.com" class="footer__link"
-        >ianflemingdeveloper@gmail.com</a
-      >
-      <ul class="social-list">
-        <li class="social-list__item">
-          <a class="social-list__link" href="https://github.com/ianfleming464/" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </li>
-        <li class="social-list__item">
-          <a
-            class="social-list__link"
-            href="https://www.linkedin.com/in/i-fleming/"
-            target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </li>
-        <li class="social-list__item">
-          <a
-            class="social-list__link"
-            href="https://www.instagram.com/ian_fleming_/"
-            target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-      </ul>
     </footer>
-
-    <script src="js/index.js"></script>
   </body>
 </html>
