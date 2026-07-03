@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Read(//Users/ianfleming/.claude/**)",
+      "Bash(open *)",
+      "Bash(curl *)",
+      "Bash(gh api *)",
+      "Bash(python3 -c ' *)",
+      "Bash(mkdir -p legacy/img legacy/files)",
+      "Bash(mv \"chat-app demo.html\" chatapp.html foodorderingapp.html meetupapp.html moviesapp.html musicplayerapp.html pokedexapp.html quizapp.html todoapp.html Portfolio_Case_Study_FINAL.md legacy/)",
+      "Bash(mv img/2022foodappthumbnail.png img/2022meetupthumbnail.png img/2022mobilechatthumbnail.png img/2022moviesappthumbnail.png img/2022pokemonthumbnail.png img/2022retrogamethumbnail.png img/2023aestheticscreenshot.png img/2023aestheticthumbnail.png \"img/Ian Fleming logo.png\" img/chat.png img/chat2.png img/chatThumbnail.png img/foodappscreenshot.png img/ianpic1.png img/meetup2.png img/meetupThumbnail.png img/meetup_alt.png img/movieapp.png img/movieapp2.png img/moviesThumbnail.png img/pokemon.png img/pokemon2.png img/pokemonThumbnail.png img/quizapp.png img/quizapp2.png img/quizappThumbnail.png img/todo.png img/todo2.png img/todoThumbnail.png img/ian2.jpg img/ian2023.jpg img/ianMarch22Pic.jpg img/ianpic2.jpg img/whatIdo.jpg legacy/img/)",
+      "Bash(mv \"files/My 1980s Movies API - Case Study.pdf\" \"files/small-talk demo.webm\" legacy/files/)",
+      "Bash(mv js *)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
