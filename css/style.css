@@ -325,6 +325,62 @@ body.site {
 }
 
 /* ============================================================
+   What I work on (landing page)
+   ============================================================ */
+
+.about {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid var(--rule);
+}
+
+.about__inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.about__label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin: 0 0 1.25rem;
+}
+
+.about__intro {
+  max-width: 65ch;
+  color: var(--ink);
+  margin: 0 0 2.25rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 2.5rem;
+}
+
+@media (min-width: 760px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-item__title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+
+.about-item__body {
+  max-width: 60ch;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ============================================================
    Case study page
    ============================================================ */
 
