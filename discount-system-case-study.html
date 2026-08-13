@@ -88,16 +88,18 @@
         <h2>The solution</h2>
         <p>
           A coordination layer built around Rebuy events and Shopify cart state: detect the active
-          discount mode, calculate line-level impact, and render truthful prices in real time. Cart
-          totals now match checkout in the critical scenarios the system handles.
+          discount mode, reconcile the authoritative line-level impact, and render truthful prices
+          in real time. Cart totals now match checkout in the critical scenarios the system
+          handles — including stacked URL and automatic promotions.
         </p>
 
         <h3>Key technical decisions</h3>
 
         <p>
           <strong>State signature tracking.</strong> Rather than reprocessing on every cart change,
-          the system tracks a signature of the current discount plus items. If nothing has changed,
-          recalculation is skipped — preventing DOM thrashing on high-traffic carts.
+          the system tracks a signature of the current discount plus cart-line identities. If
+          nothing has changed, recalculation is skipped — preventing DOM thrashing on high-traffic
+          carts while still responding correctly when duplicate variant lines change independently.
         </p>
 
         <p>
@@ -131,9 +133,45 @@
         <p>
           <strong>Multi-mode combination handling.</strong> When a multiples code (3-for-2,
           4-for-3) combines with a percentage discount, the system identifies which items are free
-          versus paid, allocates the percentage across the paid items only, and presents both
-          discount types clearly.
+          versus paid, keeps Shopify's split free line at €0.00, allocates the order-level discount
+          across paid lines only, and presents both discount types clearly.
         </p>
+
+        <p>
+          <strong>Key-first line matching.</strong> A product or variant ID is not always a unique
+          cart row: the same variant can appear more than once with different properties or selling
+          plans. The renderer therefore matches a cart line by its Shopify cart key first, with a
+          compatibility fallback where needed. That keeps snapshots, DOM updates, and discount
+          allocations attached to the right row.
+        </p>
+
+        <p>
+          <strong>Bounded resilience, not endless polling.</strong> Rebuy and Shopify can expose
+          cart data, discount messages, and Smart Cart DOM at different moments. The coordinator
+          uses short, capped retries, resets them on cart lifecycle events, and rechecks restored or
+          newly visible pages. This protects delayed connections and in-app browsers without
+          changing Shopify's discount calculation.
+        </p>
+
+        <h3>Recent cart UX hardening</h3>
+        <ul>
+          <li>
+            <strong>URL discounts use Rebuy's native summary.</strong> Instead of injecting a
+            separate notice above the Smart Cart footer, the URL discount manager locks Rebuy's own
+            heading closed, changes it to <code>RABATTCODE ANGEWENDET!</code>, and keeps the
+            applied tag and amount visible.
+          </li>
+          <li>
+            <strong>Conflicting entry is prevented without hiding context.</strong> The code-input
+            disclosure and arrow are disabled while a URL code is active, but customers can still
+            remove the visible applied tag. On removal, the manager clears the URL-code cookie and
+            restores Rebuy's normal input control.
+          </li>
+          <li>
+            <strong>Ownership remains explicit.</strong> URL 3-for-2 and 4-for-3 codes remain with
+            the dedicated multiples handler, rather than competing with the URL discount manager.
+          </li>
+        </ul>
 
         <h3>Architecture (high level)</h3>
         <p>The module names below are the actual modules in the codebase.</p>
@@ -148,12 +186,14 @@
             <code>RebuyUtils</code> — the shared utility layer. Owns cart reads and Ajax cart
             mutations, discount-source resolution (<code>getActiveDiscount()</code> resolves by
             precedence: manual Rebuy → checkout-level → automatic Buy-X-Get-Y → none), and the
-            proportional allocation math.
+            proportional allocation math. It also provides key-first cart-line identity and detects
+            Shopify's automatic free lines.
           </li>
           <li>
             <code>RebuyCartCallbacks</code> — the renderer. Owns price DOM snapshotting,
             sale/compare-at rendering, proportional discount display, revert behavior when discount
-            state changes, and subtotal reconciliation.
+            state changes, subtotal reconciliation, and the bounded recovery path for delayed URL
+            discount rendering.
           </li>
           <li>
             <code>FreeGiftHandler</code> — manages code-based free gifts, kept separate from
@@ -162,9 +202,20 @@
           </li>
           <li>
             <code>MultiplesPromoHandler</code> — manages 3-for-2 / 4-for-3 patterns and their
-            combination with percentage and fixed discounts.
+            combination with percentage and fixed discounts, including late-arriving cart UI and
+            discount messages.
           </li>
-          <li>Adjacent modules: a URL / code discount input manager and bundle-builder UI updates.</li>
+          <li>
+            <code>URLDiscountManager</code> — detects cookie-backed URL codes, coordinates their
+            native Rebuy summary state, preserves the applied tag, and restores normal code entry
+            when that tag is removed.
+          </li>
+          <li>
+            Cart drawer initialisation — waits for the Rebuy runtime with capped initial and
+            post-load retries, then falls back to event and readiness recovery so each module starts
+            once.
+          </li>
+          <li>Adjacent modules: bundle-builder UI updates and storefront-specific configuration.</li>
         </ul>
         <p>
           Coordination is centralized through <code>RebuyEventManager</code> (event flow) and
@@ -192,6 +243,14 @@
           gifts, multiples, URL input, bundle updates, automatic discount handling — make event
           flow and state transitions traceable in production across 6 storefront configurations,
           which was essential for diagnosing timing and mode-conflict issues.
+        </p>
+
+        <p>
+          <strong>Cart-row identity and delayed rendering.</strong> The difficult failures were not
+          only mathematical: a Smart Cart redraw can arrive after the cart state, and two visually
+          similar lines can be different Shopify rows. Key-first matching plus capped lifecycle-aware
+          retries keeps each display update attached to the correct row without turning the cart
+          into a polling loop.
         </p>
 
         <h2>Impact</h2>
@@ -229,16 +288,16 @@
         <p>
           <strong>Incremental refactoring beats big-bang rewrites.</strong> The system evolved
           through phased, incremental improvements — signature-based change detection, then
-          allocation precision, then mode-aware handling — deployed continuously across all
-          storefronts without customer-facing disruption. Each phase added one capability and built
-          confidence before the next.
+          allocation precision, then mode-aware handling and resilience improvements — deployed
+          continuously across all storefronts without customer-facing disruption. Each phase added
+          one capability and built confidence before the next.
         </p>
 
         <p>
           <strong>Debug visibility is critical at scale.</strong> Module-level toggles saved hours
           when edge cases surfaced across different storefronts. Being able to trace event flow and
-          state transitions in a live environment was invaluable for diagnosing timing issues and
-          discount-mode conflicts.
+          state transitions in a live environment was invaluable for diagnosing timing issues,
+          discount-mode conflicts, and late Smart Cart redraws.
         </p>
 
         <p>
@@ -262,7 +321,7 @@
             rel="noopener">
             Technical docs →
           </a>
-          <a href="files/Ian_Fleming_Resume.pdf" class="link-quiet" target="_blank" rel="noopener">
+          <a href="files/Ian_Fleming_Resume_2026.pdf" class="link-quiet" target="_blank" rel="noopener">
             Download Resume
           </a>
           <a href="index.html#work" class="link-quiet">Back to work</a>
@@ -298,7 +357,9 @@
           <ul>
             <li>Proportional allocation algorithms</li>
             <li>State signature tracking</li>
+            <li>Key-first cart-line identity</li>
             <li>Platform-aware mode detection</li>
+            <li>Bounded lifecycle-aware retries</li>
             <li>Event coordination via <code>RebuyEventManager</code></li>
             <li>Shared utility layer (<code>RebuyUtils</code>)</li>
             <li>Module orchestration (callbacks + specialized handlers)</li>
@@ -313,7 +374,7 @@
         <nav class="site-footer__links" aria-label="Contact links">
           <a href="https://github.com/ianfleming464/" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/i-fleming/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="files/Ian_Fleming_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a href="files/Ian_Fleming_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a>
           <a href="impressum.html">Impressum</a>
         </nav>
       </div>
