@@ -60,9 +60,9 @@
         <div class="work-row">
           <article class="work-featured">
             <h3 class="card-title">Cart Discount Coordination Engine</h3>
-            <p class="card-dek">Three systems, one price — in the cart and at checkout.</p>
+            <p class="card-dek">Three systems, one price - in the cart and at checkout.</p>
             <p class="work-featured__summary">
-              Customers were seeing one price in the cart and a different one at checkout — a
+              Customers were seeing one price in the cart and a different one at checkout - a
               trust-eroding problem generating recurring support tickets. Built an event-driven
               coordination layer that detects the active discount mode across Shopify, Rebuy Smart
               Cart, and manual input, and calculates accurate prices in real time. 12+ months in
@@ -90,7 +90,7 @@
             <p class="work-secondary__summary">
               Founder writing is chunked, embedded, and stored in Pinecone under that founder's
               namespace. A prompt is embedded the same way, matched against those chunks, and used
-              to ground an OpenAI completion in their actual style — rendered next to the same
+              to ground an OpenAI completion in their actual style - rendered next to the same
               prompt run through a generic model, for direct comparison.
             </p>
             <p class="work-secondary__stack">Next.js · TypeScript · OpenAI API · Pinecone</p>
@@ -105,6 +105,23 @@
                 rel="noopener"
                 >Docs</a
               >
+            </div>
+          </article>
+
+          <article class="work-secondary">
+            <h3 class="card-title">The Orbit Brief</h3>
+            <p class="card-dek">Every question takes the right path to a grounded answer.</p>
+            <p class="work-secondary__summary">
+              A live corpus of NASA news is ingested into SQL as the source of truth, with each
+              article chunked and embedded into Pinecone for semantic search. A selector agent
+              reads each question and routes it to the right retrieval path: SQL for dates and
+              recency, semantic or hybrid search for topics. An aggregator then composes a single
+              answer grounded in what was retrieved, with links back to the original NASA articles.
+            </p>
+            <p class="work-secondary__stack">TypeScript · Multi-Agent RAG · Pinecone · OpenAI API · SQL</p>
+            <div class="work-secondary__links">
+              <a href="https://the-orbit-brief.vercel.app" target="_blank" rel="noopener">Live demo →</a>
+              <a href="https://github.com/ianfleming464/the-orbit-brief" target="_blank" rel="noopener">GitHub →</a>
             </div>
           </article>
         </div>
