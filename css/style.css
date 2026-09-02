@@ -187,7 +187,7 @@ body.site {
 }
 
 .work__inner {
-  max-width: 920px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -211,6 +211,12 @@ body.site {
 @media (min-width: 860px) {
   .work-row {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1280px) {
+  .work-row {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
